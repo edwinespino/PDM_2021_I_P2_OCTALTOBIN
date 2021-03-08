@@ -49,23 +49,34 @@ class MainActivity : AppCompatActivity() {
 
                     var cont = 0
                     var va =Character.getNumericValue(cal[k])
+                    if(va>=0 && va<=7){
 
-
-                    for (i in 0..7){
+                        for (i in 0..7){
                             if(cont.equals(va)){
                                 txvValorBin.text=txvValorBin.text.toString()+dicc[i].toString()
                             }
-                        cont=cont+1
+                            cont=cont+1
 
                         }
-                    if(va>7){
+                        if(va>7 && va<0){
+                            Toast.makeText(this, "Este numero no es un octal, ingrese otro valor", Toast.LENGTH_SHORT).show()
+                            txvValorBin.text=""
+                            break
+                        }
+
+
+                    }else{
                         Toast.makeText(this, "Este numero no es un octal, ingrese otro valor", Toast.LENGTH_SHORT).show()
                         txvValorBin.text=""
                         break
-                        }
-
 
                     }
+                    }
+
+
+
+
+
 
 
 
@@ -99,6 +110,7 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this,"Debe ingresar el numero octal", Toast.LENGTH_SHORT).show()
                 status=false
                 txvValorBin.text=""
+
 
             }else{
                 if(txtNumOctal.text.length>=1){
